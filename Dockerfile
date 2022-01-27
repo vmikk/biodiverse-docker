@@ -35,7 +35,7 @@ ENV PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.30.0/bin:/us
 ENV ALIEN_GDAL_CONFIG_ARGS='--with-curl=no'
 
 ## Install modules
-RUN /root/perl5/perlbrew/bin/cpanm --notest --notest --installdeps --no-man-pages \
+RUN /root/perl5/perlbrew/bin/cpanm --notest --installdeps --no-man-pages \
   Catalyst::Devel@1.42 \
   Alien::freexl@1.03 \
   Alien::gdal@1.26 \
@@ -73,7 +73,7 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
 
 RUN /root/perl5/perlbrew/bin/cpanm \
   Task::Biodiverse::NoGUI
-  
+
 RUN /root/perl5/perlbrew/bin/cpanm -l local \
   https://github.com/shawnlaffan/biodiverse-utils/tarball/master
 
