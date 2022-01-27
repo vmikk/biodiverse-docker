@@ -35,29 +35,41 @@ ENV PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.30.0/bin:/us
 ENV ALIEN_GDAL_CONFIG_ARGS='--with-curl=no'
 
 ## Install modules
-RUN /root/perl5/perlbrew/bin/cpanm --notest --installdeps --no-man-pages \
+RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
+  ExtUtils::Embed@1.35 \
   Catalyst::Devel@1.42 \
   Module::Compile@0.38 \
+  FFI::Build::MM@1.56 \
   FFI::Platypus@1.56 \
-  FFI::Platypus::Declare@1.34 \
   PDL@2.068 \
   Text::CSV@2.01 \
   Text::CSV_XS@1.47 \
   Alien::freexl@1.03 \
-  Alien::geos::af@1.008 \
   Alien::libtiff@1.01 \
-  Alien::proj@1.16 \
+  Alien::cmake3@0.08 \
   Alien::sqlite@1.06 \
-  Alien::spatialite@1.04 \
-  Alien::gdal@1.26 \
+  Alien::patch@0.15
+
+RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
+  FFI::Platypus::Declare@1.34 \
+  Alien::geos::af@1.008 \
+  Alien::proj@1.16
+
+RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
+  Alien::spatialite@1.04
+
+RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
+  Alien::gdal@1.26
+
+RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
   Geo::GDAL::FFI@0.09
 
 ## Install Biodiverse (pull only the latest commit from GitHub)
-## Better to use a tagged snashot and download it as a tarball??
+## Better to use a tagged snapshot and download it as a tarball??
 RUN git clone --depth 1 -b master https://github.com/shawnlaffan/biodiverse.git
 WORKDIR "biodiverse"
 
-RUN /root/perl5/perlbrew/bin/cpanm --skip-installed --notest --no-man-pages --installdeps . 
+RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied --notest --no-man-pages --installdeps . 
 
 ## Install remaining modules
 RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
@@ -72,10 +84,10 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
 #    Blort::Bork \
 #    Panda::Lib \
 
-RUN /root/perl5/perlbrew/bin/cpanm \
+RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied \
   Task::Biodiverse::NoGUI
 
-RUN /root/perl5/perlbrew/bin/cpanm -l local \
+RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied -l local \
   https://github.com/shawnlaffan/biodiverse-utils/tarball/master
 
 # RUN /root/perl5/perlbrew/bin/cpanm \
