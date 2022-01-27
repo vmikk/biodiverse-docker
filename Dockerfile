@@ -37,15 +37,19 @@ ENV ALIEN_GDAL_CONFIG_ARGS='--with-curl=no'
 ## Install modules
 RUN /root/perl5/perlbrew/bin/cpanm --notest --installdeps --no-man-pages \
   Catalyst::Devel@1.42 \
+  Module::Compile@0.38 \
+  FFI::Platypus@1.56 \
+  FFI::Platypus::Declare@1.34 \
+  PDL@2.068 \
+  Text::CSV@2.01 \
+  Text::CSV_XS@1.47 \
   Alien::freexl@1.03 \
-  Alien::gdal@1.26 \
   Alien::geos::af@1.008 \
   Alien::libtiff@1.01 \
   Alien::proj@1.16 \
-  Alien::spatialite@1.04 \
   Alien::sqlite@1.06 \
-  Module::Compile@0.38 \
-  PDL@2.068 \
+  Alien::spatialite@1.04 \
+  Alien::gdal@1.26 \
   Geo::GDAL::FFI@0.09
 
 ## Install Biodiverse (pull only the latest commit from GitHub)
@@ -58,10 +62,7 @@ RUN /root/perl5/perlbrew/bin/cpanm --skip-installed --notest --no-man-pages --in
 ## Install remaining modules
 RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
   Data::Recursive@1.1.0 \
-  FFI::Platypus::Declare@1.34 \
   Getopt::Long::Descriptive@0.110 \
-  Text::CSV@2.01 \
-  Text::CSV_XS@1.47 \
   List::BinarySearch@0.25 \
   LWP::Protocol::https@6.10 \
   Inline::Module@0.34
