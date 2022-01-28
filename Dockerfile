@@ -65,8 +65,7 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
   Geo::GDAL::FFI@0.09
 
 ## Install Biodiverse (pull only the latest commit from GitHub)
-## Better to use a tagged snapshot and download it as a tarball??
-RUN git clone --depth 1 -b master https://github.com/shawnlaffan/biodiverse.git
+RUN git clone --depth 1 -b r3.1 https://github.com/shawnlaffan/biodiverse.git
 WORKDIR "biodiverse"
 
 RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied --notest --no-man-pages --installdeps . 
