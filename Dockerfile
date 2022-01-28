@@ -12,11 +12,14 @@ RUN apt-get update && \
     apt-utils locales make cmake libtool automake autoconf pkg-config \
     unzip git curl wget less \
     libffi-dev zlib1g-dev libminizip-dev libexpat1-dev libssl-dev \
+    libarmadillo-dev libpoppler-dev libepsilon-dev liblzma-dev \
+    libkml-dev libfreexl-dev libogdi-dev \
     libgeos-dev librttopo-dev \
     libsqlite3-dev sqlite3 \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
+
 
 ## Assign variables with perl path
 ENV PERLBREW_PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.30.0/bin
