@@ -91,7 +91,7 @@ RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied \
   Task::Biodiverse::NoGUI@3.001
 
 RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied -l local \
-  https://github.com/shawnlaffan/biodiverse-utils/tarball/master
+  git://github.com/shawnlaffan/biodiverse-utils.git@v1.07
 
 # RUN /root/perl5/perlbrew/bin/cpanm \
 #   http://www.biodiverse.unsw.edu.au/downloads/Biodiverse-Utils-1.06.tar.gz
