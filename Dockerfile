@@ -42,9 +42,12 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
   Module::Compile@0.38 \
   FFI::Build::MM@1.56 \
   FFI::Platypus@1.56 \
+  List::MoreUtils@0.430 \
   PDL@2.068 \
+  Test2::Harness@1.000042 \
   Text::CSV@2.01 \
   Text::CSV_XS@1.47 \
+  Alien::Build@2.25 \
   Alien::freexl@1.03 \
   Alien::libtiff@1.01 \
   Alien::cmake3@0.08 \
