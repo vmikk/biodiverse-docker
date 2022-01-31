@@ -88,7 +88,7 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
 #    Panda::Lib \
 
 RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied \
-  Task::Biodiverse::NoGUI
+  Task::Biodiverse::NoGUI@3.001
 
 RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied -l local \
   https://github.com/shawnlaffan/biodiverse-utils/tarball/master
