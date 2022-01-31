@@ -33,8 +33,6 @@ RUN /root/perl5/perlbrew/bin/perlbrew use perl-5.34.0
 RUN /root/perl5/perlbrew/bin/perlbrew install-cpanm
 
 ## Set the PATH to get setup working properly
-
-ENV ALIEN_GDAL_CONFIG_ARGS='--with-curl=no'
 ENV PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.34.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 ## Install modules
