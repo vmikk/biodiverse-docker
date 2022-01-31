@@ -29,6 +29,7 @@ requires "Math::Random::MT::Auto", "6.23";         # updated from 6.21
 requires "OLE::Storage_Lite", "0.20";              # added
 requires "parent";
 requires "Path::Class", "0.37";                  # version specified
+requires "PDL::Stats", "0.81";                   # added
 requires "Readonly", "2.05";                     # version specified
 requires "Ref::Util", "0.204";                   # version specified
 requires "Ref::Util::XS", "0.117";               # version specified
