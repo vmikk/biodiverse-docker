@@ -22,20 +22,20 @@ RUN apt-get update && \
 
 
 ## Assign variables with perl path
-ENV PERLBREW_PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.30.0/bin
-ENV PERLBREW_MANPATH=/root/perl5/perlbrew/perls/perl-5.30.0/man
+ENV PERLBREW_PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.34.0/bin
+ENV PERLBREW_MANPATH=/root/perl5/perlbrew/perls/perl-5.34.0/man
 
 ## Install perlbrew & Perl & cpanm
 RUN curl -L https://install.perlbrew.pl | bash
 RUN echo "source /root/perl5/perlbrew/etc/bashrc" >> /root/.bashrc
-RUN /root/perl5/perlbrew/bin/perlbrew install -j 1 --notest perl-5.30.0
-RUN /root/perl5/perlbrew/bin/perlbrew switch perl-5.30.0
+RUN /root/perl5/perlbrew/bin/perlbrew install -j 1 --notest perl-5.34.0
+RUN /root/perl5/perlbrew/bin/perlbrew use perl-5.34.0
 RUN /root/perl5/perlbrew/bin/perlbrew install-cpanm
 
 ## Set the PATH to get setup working properly
-ENV PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.30.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 ENV ALIEN_GDAL_CONFIG_ARGS='--with-curl=no'
+ENV PATH=/root/perl5/perlbrew/bin:/root/perl5/perlbrew/perls/perl-5.34.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 ## Install modules
 RUN /root/perl5/perlbrew/bin/cpanm --notest --no-man-pages \
