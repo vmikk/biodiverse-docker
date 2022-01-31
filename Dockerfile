@@ -62,8 +62,14 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
 RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
   Alien::spatialite@1.04
 
+# export LD_LIBRARY_PATH=`perl -MAlien::geos::af -E'print Alien::geos::af->dist_dir . q{/lib}'`
+ENV LD_LIBRARY_PATH=`perl -MAlien::geos::af -E'print Alien::geos::af->dist_dir . q{/lib}'`
+
 RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
-  Alien::gdal@1.26
+  Alien::gdal@1.27
+
+# RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages -l local \
+#   git://github.com/shawnlaffan/perl-alien-gdal.git@r1.27
 
 RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
   Geo::GDAL::FFI@0.09
