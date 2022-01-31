@@ -74,10 +74,14 @@ RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
 RUN /root/perl5/perlbrew/bin/cpanm --notest --skip-satisfied --no-man-pages \
   Geo::GDAL::FFI@0.09
 
-## Install Biodiverse (pull only the latest commit from GitHub)
+## Download Biodiverse repo (pull only the latest commit from GitHub)
 RUN git clone --depth 1 -b r3.1 https://github.com/shawnlaffan/biodiverse.git
 WORKDIR "biodiverse"
 
+## Get the updated `cpanfile` with fixed module versions
+RUN wget https://raw.githubusercontent.com/vmikk/biodiverse-docker/main/cpanfile -O cpanfile
+
+## Install Biodiverse
 RUN /root/perl5/perlbrew/bin/cpanm --skip-satisfied --notest --no-man-pages --installdeps . 
 
 ## Install remaining modules
