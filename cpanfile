@@ -1,86 +1,80 @@
-requires "Class::Inspector";
-requires "Clone", "0.35";
-requires "Cpanel::JSON::XS", "3";
-requires "DBD::XBase";
-requires "Data::Structure::Util";
-requires "Data::Compare";
-#requires "Data::DumpXML";
-requires "Exception::Class";
-requires "Exporter::Easy";
-#requires "FFI::Platypus::Declare";
-requires "File::BOM";
-requires "File::Find::Rule";
-requires "Geo::Converter::dms2dd", "0.05";
-requires "Geo::GDAL::FFI", 0.09;  #  this will pick up the aliens
-requires "Geo::ShapeFile", "3.00",
-requires "Getopt::Long::Descriptive";
-requires "HTML::QuickTable";
-requires "JSON::MaybeXS", "1.003";
-requires "JSON::PP";
-requires "List::MoreUtils", "0.425";
-requires "List::Unique::DeterministicOrder";
-requires "List::Util", "1.54";
-requires "Math::Polygon";
-requires "Math::Random::MT::Auto", "6.21";
-requires "Path::Class";
-requires "Readonly";
-requires "Ref::Util";
-requires "Ref::Util::XS";
-requires "Regexp::Common";
-requires "Sereal", "3";
-requires "Sort::Key";
-requires "Spreadsheet::ParseExcel";
-requires "Spreadsheet::ParseXLSX";
-requires "Spreadsheet::ParseODS";
-requires "Spreadsheet::Read", "0.82";
-requires "Spreadsheet::ReadSXC", "0.28";
-requires "Statistics::Descriptive", "3.0608";
-requires "Statistics::Sampler::Multinomial", '1.00';
-requires "Text::CSV_XS", "1.04";
-requires "Text::Fuzzy";
-requires "Text::Wrapper";
-requires "Tree::R";
-requires "URI::Escape";
-requires "URI::Escape::XS";
-$^O eq 'MSWin32' ? (requires "Win32::LongPath") : ();
-requires "YAML::Syck", "1.29";
+## Based on https://github.com/shawnlaffan/biodiverse/commit/a841cba9f56c87df6bc11cb1625ef6d29954a706
+
+requires "Archive::Zip", "1.68";                   # added
 requires "autovivification", "0.18";
+requires "Class::Inspector", "1.36";               # version specified
+requires "Clone", "0.45";                          # updated from 0.35
+requires "Cpanel::JSON::XS", "4.27";               # updated from 3
+requires "Crypt::Mode::CBC", "0.076";              # added
+requires "Data::Compare", "1.27";                  # version specified
+requires "Data::Recursive", "1.1.0";               # version specified
+requires "Data::Structure::Util", "0.16";          # version specified
+requires "DBD::XBase", "1.05";                     # version specified
+requires "Exception::Class", "1.45";               # version specified
+requires "Exporter::Easy", "0.18";                 # version specified
+requires "File::BOM", "0.18";                      # version specified
+requires "File::Find::Rule", "0.34";               # version specified
+requires "Geo::Converter::dms2dd", "0.05";
+requires "Geo::ShapeFile", "3.01",                 # updated from 3.00
+requires "Geo::Shapefile::Writer", "0.006";        # added
+requires "Getopt::Long::Descriptive", "0.110";     # version specified
+requires "HTML::QuickTable", "1.12";               # version specified
+requires "JSON::MaybeXS", "1.004003";              # updated from 1.003
+requires "JSON::PP";
+requires "List::MoreUtils", "0.430";               # updated from 0.425
+requires "List::Unique::DeterministicOrder", "0.001";  # version specified
+requires "List::Util", "1.60";                     # updated from 1.54
+requires "Math::Polygon", "1.10";                  # version specified
+requires "Math::Random::MT::Auto", "6.23";         # updated from 6.21
+requires "OLE::Storage_Lite", "0.20";              # added
 requires "parent";
-requires "rlib";
-#requires "Math::AnyNum";  #  until we don't
+requires "Path::Class", "0.37";                  # version specified
+requires "Readonly", "2.05";                     # version specified
+requires "Ref::Util", "0.204";                   # version specified
+requires "Ref::Util::XS", "0.117";               # version specified
+requires "Regexp::Common", "2017060201";         # version specified
+requires "rlib", "0.02";                         # version specified
+requires "Sereal", "4.018";                      # updated from 3
+requires "Sort::Key", "1.33";                    # version specified
+requires "Sort::Naturally", "1.03";              # added
+requires "Spreadsheet::ParseExcel", "0.65";      # version specified
+requires "Spreadsheet::ParseODS";
+requires "Spreadsheet::ParseXLSX", "0.27";       # version specified
+requires "Spreadsheet::Read", "0.84";            # updated from 0.82
+requires "Spreadsheet::ReadSXC", "0.37";         # updated from 0.28
+requires "Statistics::Descriptive", "3.0608";    # updated from 3.0608
 requires "Statistics::Descriptive::PDL", "0.12";
+requires "Statistics::Sampler::Multinomial", '1.01'; # updated from 1.00
+requires "Text::CSV_XS", "1.47";                 # updated from 1.04
+requires "Text::Fuzzy", "0.29";                  # version specified
+requires "Text::Levenshtein", "0.14";            # added
+requires "Text::Wrapper", "1.05";                # version specified
+requires "Tree::R", "0.072";                     # version specified
+requires "URI::Escape";
+requires "URI::Escape::XS", "0.14"       ;       # version specified
+requires "XML::Parser", "2.46";                  # added
+requires "XML::Twig", "3.52";                    # added
+requires "YAML::Syck", "1.34";                   # updated from 1.29
 
-suggests "Panda::Lib";
-suggests "Data::Recursive";
+# requires "Data::DumpXML";
+# requires "FFI::Platypus::Declare", "1.34";
+# requires "Geo::GDAL::FFI", 0.09;  #  this will pick up the aliens
+# suggests "Panda::Lib";
 
-#test_requires => sub {
-    requires "Test::Lib";
-    requires "Test::TempDir::Tiny";
-    requires "Test2::Suite";
-    $^O ne 'MSWin32' ? (suggests "Test2::Harness") : ();
-    requires "Data::Section::Simple";
-    #requires "Test::Deep";
-    requires "Perl::Tidy";
-    #requires "Test::Most";
-    requires "Devel::Symdump";
-    requires "File::Compare";
-    requires "Scalar::Util::Numeric";
-    requires "Test::TempDir::Tiny";
-    requires 'Test::Deep::NoTest';
-    #requires "Test::Exception";
-    requires 'Alien::Build::Plugin::Fetch::Cache';
-#};
+requires "Alien::Build", "2.25";                                  # added
+requires "Alien::Build::Plugin::Cleanse::BuildDir", "0.05";       # added
+requires "Alien::Build::Plugin::Decode::SourceForge", "0.02";     # added
+requires "Alien::Build::Plugin::PkgConfig::PPWrapper", "0.03";    # added
+# requires "Alien::Build::Plugin::Fetch::Cache";
 
-feature 'GUI', 'GUI packages' => sub {
-    requires 'Browser::Start';
-    requires 'ExtUtils::Depends';
-    requires 'ExtUtils::Depends'; 
-    requires 'ExtUtils::PkgConfig';
-    requires 'Glib';
-    requires 'Gnome2::Canvas';
-    requires 'Gtk2';
-    requires 'HTTP::Tiny';
-    requires 'IO::Socket::SSL';
-    requires 'LWP::Simple';
-    requires 'Pango';
-};
+# test_requires
+requires "Data::Section::Simple", "0.07";       # version specified
+requires "Devel::Symdump", "2.18";              # version specified
+requires "File::Compare";
+requires "Perl::Tidy";
+requires "Scalar::Util::Numeric", "0.40";       # version specified
+requires "Test2::Suite", "0.000144";            # version specified
+requires "Test::Deep::NoTest";
+requires "Test::Lib", "0.002";                  # version specified
+requires "Test::TempDir::Tiny", "0.018";        # version specified
+
