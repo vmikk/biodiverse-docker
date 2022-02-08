@@ -92,7 +92,12 @@ RUN export LD_LIBRARY_PATH=`perl -MAlien::geos::af -E'print Alien::geos::af->dis
 
 
 ## Download Biodiverse repo (pull only the latest commit from GitHub)
-RUN git clone --depth 1 -b r3.1 https://github.com/shawnlaffan/biodiverse.git
+## Latest stable release
+# RUN git clone --depth 1 -b r3.1 https://github.com/shawnlaffan/biodiverse.git
+
+## Latest commit from the master branch (development version)
+RUN git clone --depth 1 https://github.com/shawnlaffan/biodiverse.git
+
 WORKDIR "biodiverse"
 
 ## Get the updated `cpanfile` with fixed module versions
