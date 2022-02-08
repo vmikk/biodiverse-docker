@@ -11,7 +11,7 @@ ENV TZ=UTC
 ## Use: docker build -t biodiverse-image --build-arg CPANMARGS="--notest"
 # ARG CPANMARGS=""   # do not skip the testing of modules
 ARG DO_TEST="--notest"
-ARG CPANMARGS="--no-man-pages --skip-satisfied"
+ARG CPANMARGS="--skip-satisfied"  # --no-man-pages
 
 RUN echo "Running build with" "$DO_TEST"
 
