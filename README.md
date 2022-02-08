@@ -2,12 +2,12 @@
 A docker image to run [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010).
 
 
-# Docker images
+# Docker image
 To build the Docker image with Biodiverse run:
 ```
 docker build --tag biodiverse . 
 ```
-File `Dockerfile` should be present in the cuttent direcotry.
+File `Dockerfile` should be present in the cuttent directory.
 
 
 
