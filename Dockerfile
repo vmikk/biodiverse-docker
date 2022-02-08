@@ -77,7 +77,7 @@ RUN cpanm "$DO_TEST" "$CPANMARGS" \
   Alien::libtiff@1.01 \
   Alien::cmake3@0.08 \
   Alien::sqlite@1.06 \
-  Alien::patch@0.10 \
+  Alien::patch@0.15 \
   FFI::Platypus::Declare@1.34 \
   Alien::geos::af@1.008 \
   Alien::proj@1.16 \
