@@ -109,7 +109,13 @@ RUN cpanm "$DO_TEST" "$CPANMARGS" \
   LWP::Protocol::https@6.10 \
   Inline::Module@0.34
 
-# RUN cpanm Panda::Lib CPP::catch::test
+# RUN cpanm "$DO_TEST" "$CPANMARGS" \
+#   CPP::catch::test \
+#   CPP::panda::lib@1.1.1 \
+#   Panda::Install@1.2.12 \
+#   Panda::Lib@1.3.6 \
+#   Panda::XS@2.1.9
+
 
 RUN cpanm --skip-satisfied \
   Task::Biodiverse::NoGUI@3.001
