@@ -121,9 +121,9 @@ RUN cpanm "$DO_TEST" "$CPANMARGS" \
 #   Panda::Lib@1.3.6 \
 #   Panda::XS@2.1.9
 
-
-RUN cpanm --skip-satisfied \
-  Task::Biodiverse::NoGUI@3.001
+## Task::Biodiverse not needed for versions >3.1
+# RUN cpanm --skip-satisfied \
+#   Task::Biodiverse::NoGUI@3.001
 
 RUN cpanm --skip-satisfied -l local \
   git://github.com/shawnlaffan/biodiverse-utils.git@v1.07
