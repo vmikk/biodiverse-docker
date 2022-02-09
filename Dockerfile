@@ -134,3 +134,6 @@ RUN cpanm --skip-satisfied -l local \
 ## Test Biodiverse
 # ENV export BD_NO_TEST_GUI=1  #  no need to test the GUI libs load
 # RUN prove -l
+
+## Add Biodiverse to Perl's @INC
+ENV PERL5LIB="/biodiverse/lib"
