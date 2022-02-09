@@ -7,7 +7,7 @@ To build the Docker image with Biodiverse run:
 ```
 docker build --tag biodiverse . 
 ```
-File `Dockerfile` should be present in the cuttent directory.
+The `Dockerfile` should be present in the current directory.
 
 
 
