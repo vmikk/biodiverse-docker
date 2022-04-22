@@ -1,5 +1,6 @@
 # biodiverse-docker
-A docker image to run [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010).
+
+This repository contains definition files the [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010) containers.
 
 
 # Docker image
