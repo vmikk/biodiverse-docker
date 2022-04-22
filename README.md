@@ -1,4 +1,4 @@
-# biodiverse-docker
+# Biodiverse
 
 This repository contains definition files the [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010) containers.
 
