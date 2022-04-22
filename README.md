@@ -4,12 +4,18 @@ This repository contains definition files the [Biodiverse](https://shawnlaffan.g
 
 
 # Docker image
-To build the Docker image with Biodiverse run:
+
+To build the [Docker](https://www.docker.com/) image with Biodiverse run:
 ```
 docker build --tag biodiverse . 
 ```
 The `Dockerfile` should be present in the current directory.
 
+
+A ready-to-use image is available at [Docker Hub](https://hub.docker.com/r/vmikk/biodiverse) and can be downloaded with:
+```
+docker pull vmikk/biodiverse:0.0.1
+```
 
 
 # Citation
