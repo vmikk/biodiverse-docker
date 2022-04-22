@@ -18,5 +18,21 @@ docker pull vmikk/biodiverse:0.0.1
 ```
 
 
+# Singularity image
+
+To build the [Singularity](https://sylabs.io/singularity/) image with Biodiverse run:
+```
+sudo singularity build Biodiverse.sif SingularityDef.def
+```
+The `SingularityDef.def` should be present in the current directory.
+
+
+A ready-to-use image is available at the [Singularity Library](https://cloud.sylabs.io/library/vmiks) and can be downloaded with:
+```
+singularity pull --arch amd64 library://vmiks/gbif/biodiverse:0-0-1
+```
+
+
 # Citation
+
 Laffan SW, Lubarsky E, Rosauer DF (2010) Biodiverse, a tool for the spatial analysis of biological and related diversity. Ecography, 33: 643-647. [DOI: 10.1111/j.1600-0587.2010.06237.x](https://onlinelibrary.wiley.com/doi/10.1111/j.1600-0587.2010.06237.x)
