@@ -1,8 +1,8 @@
 # Biodiverse
 
 [![GitHub license](https://img.shields.io/github/license/vmikk/biodiverse-docker)](https://github.com/vmikk/biodiverse-docker/blob/main/LICENSE)
-[![Hosted - DockerHub](https://img.shields.io/badge/Hosted-DockerHub)](https://hub.docker.com/r/vmikk/biodiverse)
-[![Hosted - SingularityLibrary](https://img.shields.io/badge/Hosted-SingularityLibrary)](https://cloud.sylabs.io/library/vmiks)
+[![Hosted_DockerHub](https://img.shields.io/badge/Hosted-DockerHub-blue)](https://hub.docker.com/r/vmikk/biodiverse)
+[![Hosted_SingularityLibrary](https://img.shields.io/badge/Hosted-SingularityLibrary-blue)](https://cloud.sylabs.io/library/vmiks)
 
 
 This repository contains definition files the [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010) containers.
