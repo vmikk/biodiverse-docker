@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/vmikk/biodiverse-docker)](https://github.com/vmikk/biodiverse-docker/blob/main/LICENSE)
 [![Hosted_DockerHub](https://img.shields.io/badge/Hosted-DockerHub-blue)](https://hub.docker.com/r/vmikk/biodiverse)
-[![Hosted_SingularityLibrary](https://img.shields.io/badge/Hosted-SingularityLibrary-blue)](https://cloud.sylabs.io/library/vmiks)
+[![Hosted_SingularityLibrary](https://img.shields.io/badge/Hosted-SingularityLibrary-blue)](https://cloud.sylabs.io/library/vmiks/gbif/biodiverse)
 
 
 This repository contains definition files the [Biodiverse](https://shawnlaffan.github.io/biodiverse/) (Laffan et al., 2010) containers.
@@ -32,7 +32,7 @@ sudo singularity build Biodiverse.sif SingularityDef.def
 The `SingularityDef.def` should be present in the current directory.
 
 
-A ready-to-use image is available at the [Singularity Library](https://cloud.sylabs.io/library/vmiks) and can be downloaded with:
+A ready-to-use image is available at the [Singularity Library](https://cloud.sylabs.io/library/vmiks/gbif/biodiverse) and can be downloaded with:
 ```
 singularity pull --arch amd64 library://vmiks/gbif/biodiverse:0-0-1
 ```
