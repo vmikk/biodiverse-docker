@@ -21,13 +21,15 @@ From: ubuntu:20.04
 %environment
   export PERLBREW_CPAN_MIRROR="https://cpan.metacpan.org"
   export PERLBREW_SKIP_INIT=1
+  export PERLBREW_PATH="/opt/perl5/perlbrew/bin/perlbrew"
   export SHELL="/bin/bash"
 
   ## Add Biodiverse to Perl's @INC
-  export PERL5LIB="/opt/biodiverse/lib"
+  export PERL5LIB="/opt/biodiverse/lib:/opt/perllibs/lib/perl5"
+    # /opt/perllibs/lib/perl5/x86_64-linux-gnu-thread-multi
 
   ## Add Perl to the PATH
-  PATH=/opt/perl5/perlbrew/perls/perl-5.34.0/bin/:$PATH
+  PATH=/opt/perl5/perlbrew/perls/perl-5.34.0/bin/:/opt/perllibs/bin/:$PATH
 
 
 %post -c /bin/bash
@@ -36,10 +38,15 @@ From: ubuntu:20.04
   export TZ=UTC
 
   ## Assign variables with perl path
-  export PERLBREW_PATH=/opt/perl5/perlbrew
   export PERLBREW_ROOT=/opt/perl5/perlbrew
   export PERLBREW_HOME=/opt/.perlbrew
-  mkdir -p "${PERLBREW_ROOT}" "${PERLBREW_HOME}"
+  export PERL_BASE="/opt/perllibs"
+  export PERL_MM_OPT="INSTALL_BASE=$PERL_BASE"
+  export PERL_MB_OPT="--install_base $PERL_BASE"
+  export PERL5LIB="$PERL_BASE/lib/perl5"
+  export PATH="$PERL_BASE/bin${PATH:+:$PATH}"
+  export MANPATH="$PERL_BASE/man${MANPATH:+:$MANPATH}"
+  mkdir -p "${PERLBREW_ROOT}" "${PERLBREW_HOME}" "${PERL_BASE}"
   
   perlbrew=${PERLBREW_ROOT}"/bin/perlbrew"
   cpanm=${PERLBREW_ROOT}"/bin/cpanm"
@@ -100,10 +107,7 @@ From: ubuntu:20.04
 
   ## Environment
   # ${perlbrew} env
-  # PERLBREW_LIB=
-  # PERL5LIB=
-  # PERL_LOCAL_LIB_ROOT=
-  # export PATH="${PERLBREW_PATH}:${PATH}"
+  # perl -le 'print for @INC'   # Check @INC
 
   ## Check if GDAL is installed
   # gdalinfo --version              # GDAL 3.0.4, released 2020/01/28
