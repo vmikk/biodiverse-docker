@@ -26,7 +26,6 @@ From: ubuntu:20.04
 
   ## Add Biodiverse to Perl's @INC
   export PERL5LIB="/opt/biodiverse/lib:/opt/perllibs/lib/perl5"
-    # /opt/perllibs/lib/perl5/x86_64-linux-gnu-thread-multi
 
   ## Add Perl to the PATH
   PATH=/opt/perl5/perlbrew/perls/perl-5.34.0/bin/:/opt/perllibs/bin/:$PATH
@@ -51,16 +50,9 @@ From: ubuntu:20.04
   perlbrew=${PERLBREW_ROOT}"/bin/perlbrew"
   cpanm=${PERLBREW_ROOT}"/bin/cpanm"
 
+  ## Assign read and execute access for everyone (+ write access for the owner) to the /opt dir
   chmod -R 755 /opt
 
-  ## Set the variable (empty or --notest) that can be defined when building the image.
-  ## We might want to set it individually for some dependencies, e.g. for the Biodiverse specific libraries.
-  ## Use: docker build -t biodiverse-image --build-arg CPANMARGS="--notest"
-  # export CPANMARGS=""   # do not skip the testing of modules
-  export DO_TEST="--notest"
-  export CPANMARGS="--skip-satisfied"  # --no-man-pages
-
-  echo "Running build with" "$DO_TEST"
 
   yes | unminimize
 
@@ -104,16 +96,6 @@ From: ubuntu:20.04
   ${perlbrew} install-cpanm --yes
   ${perlbrew} install-patchperl --yes
 
-
-  ## Environment
-  # ${perlbrew} env
-  # perl -le 'print for @INC'   # Check @INC
-
-  ## Check if GDAL is installed
-  # gdalinfo --version              # GDAL 3.0.4, released 2020/01/28
-  # ogrinfo --version
-  # /sbin/ldconfig -p | grep gdal
-
   ## Install modules
   ${cpanm} "$DO_TEST" "$CPANMARGS" \
     ExtUtils::Embed@1.35 \
@@ -138,8 +120,6 @@ From: ubuntu:20.04
     Alien::spatialite@1.04 \
     Alien::gdal@1.27
 
-  # ${cpanm} "$DO_TEST" "$CPANMARGS" Test2::Harness@1.000042
-
   ## Export LD_LIBRARY_PATH and install Geo::GDAL::FFI
   export LD_LIBRARY_PATH=`perl -MAlien::geos::af -E'print Alien::geos::af->dist_dir . q{/lib}'` \
     && ${cpanm} "$DO_TEST" "$CPANMARGS" Geo::GDAL::FFI@0.09
@@ -147,9 +127,6 @@ From: ubuntu:20.04
   cd /opt
 
   ## Download Biodiverse repo (pull only the latest commit from GitHub)
-  ## Latest stable release
-  # git clone --depth 1 -b r3.1 https://github.com/shawnlaffan/biodiverse.git
-
   ## Latest commit from the master branch (development version)
   git clone --depth 1 https://github.com/shawnlaffan/biodiverse.git
   cd  "biodiverse"
@@ -168,29 +145,14 @@ From: ubuntu:20.04
     LWP::Protocol::https@6.10 \
     Inline::Module@0.34
 
-  # ${cpanm} "$DO_TEST" "$CPANMARGS" \
-  #   CPP::catch::test \
-  #   CPP::panda::lib@1.1.1 \
-  #   Panda::Install@1.2.12 \
-  #   Panda::Lib@1.3.6 \
-  #   Panda::XS@2.1.9
-
-  ## Task::Biodiverse not needed for versions >3.1
-  # ${cpanm} --skip-satisfied \
-  #   Task::Biodiverse::NoGUI@3.001
 
   ${cpanm} --skip-satisfied -l local \
     https://github.com/shawnlaffan/biodiverse-utils/archive/refs/tags/v1.07.tar.gz
-
-  # ${cpanm} \
-  #   http://www.biodiverse.unsw.edu.au/downloads/Biodiverse-Utils-1.06.tar.gz
 
   ## Test Biodiverse
   # export BD_NO_TEST_GUI=1  #  no need to test the GUI libs load
   # prove -l
 
-
 %test
-  # perlbrew version
-  env | grep -i ^perl
+  /opt/perl5/perlbrew/perls/perl-5.34.0/bin/perl -V
 
