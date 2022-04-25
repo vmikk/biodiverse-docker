@@ -28,7 +28,7 @@ From: ubuntu:20.04
   export PERL5LIB="/opt/biodiverse/lib:/opt/perllibs/lib/perl5"
 
   ## Add Perl to the PATH
-  PATH=/opt/perl5/perlbrew/perls/perl-5.34.0/bin/:/opt/perllibs/bin/:$PATH
+  export PATH=/opt/perl5/perlbrew/perls/perl-5.34.0/bin/:/opt/perllibs/bin/:$PATH
 
 
 %post -c /bin/bash
@@ -42,17 +42,22 @@ From: ubuntu:20.04
   export PERL_BASE="/opt/perllibs"
   export PERL_MM_OPT="INSTALL_BASE=$PERL_BASE"
   export PERL_MB_OPT="--install_base $PERL_BASE"
-  export PERL5LIB="$PERL_BASE/lib/perl5"
+  export PERL_CPANM_OPT="--local-lib=$PERL_BASE"
+  export PERL5LIB="$PERL_BASE"/lib/perl5
+  export PERL_LOCAL_LIB_ROOT="$PERL_BASE"/lib/perl5
   export PATH="$PERL_BASE/bin${PATH:+:$PATH}"
   export MANPATH="$PERL_BASE/man${MANPATH:+:$MANPATH}"
-  mkdir -p "${PERLBREW_ROOT}" "${PERLBREW_HOME}" "${PERL_BASE}"
+  mkdir -p "${PERLBREW_ROOT}" "${PERLBREW_HOME}" "${PERL5LIB}"
   
   perlbrew=${PERLBREW_ROOT}"/bin/perlbrew"
   cpanm=${PERLBREW_ROOT}"/bin/cpanm"
+  export PERL_CPANM_OPT="--notest --local-lib $PERL5LIB"
 
   ## Assign read and execute access for everyone (+ write access for the owner) to the /opt dir
   chmod -R 755 /opt
 
+  ## cpanm default options
+  export PERL_CPANM_OPT="--notest --skip-satisfied --local-lib $PERL5LIB"
 
   yes | unminimize
 
@@ -90,14 +95,14 @@ From: ubuntu:20.04
   curl -L https://install.perlbrew.pl | bash
   ${perlbrew} init
   source ${PERLBREW_ROOT}/etc/bashrc
-  ${perlbrew} install "$DO_TEST" perl-5.34.0  # spawns a sub-shell
+  ${perlbrew} install --notest perl-5.34.0  # spawns a sub-shell
 
   ${perlbrew} use perl-5.34.0
   ${perlbrew} install-cpanm --yes
   ${perlbrew} install-patchperl --yes
 
   ## Install modules
-  ${cpanm} "$DO_TEST" "$CPANMARGS" \
+  ${cpanm} \
     ExtUtils::Embed@1.35 \
     Catalyst::Devel@1.42 \
     Module::Compile@0.38 \
@@ -122,7 +127,7 @@ From: ubuntu:20.04
 
   ## Export LD_LIBRARY_PATH and install Geo::GDAL::FFI
   export LD_LIBRARY_PATH=`perl -MAlien::geos::af -E'print Alien::geos::af->dist_dir . q{/lib}'` \
-    && ${cpanm} "$DO_TEST" "$CPANMARGS" Geo::GDAL::FFI@0.09
+    && ${cpanm} Geo::GDAL::FFI@0.09
 
   cd /opt
 
@@ -134,19 +139,19 @@ From: ubuntu:20.04
   ## Get the updated `cpanfile` with fixed module versions
   wget https://raw.githubusercontent.com/vmikk/biodiverse-docker/main/cpanfile -O cpanfile
 
-  ## Install Biodiverse
-  ${cpanm} --skip-satisfied --installdeps .
+  ## Install Biodiverse + deps for the current directory
+  ${cpanm} --installdeps .
 
   ## Install remaining modules
-  ${cpanm} "$DO_TEST" "$CPANMARGS" \
+  ${cpanm} \
     Data::Recursive@1.1.0 \
     Getopt::Long::Descriptive@0.110 \
     List::BinarySearch@0.25 \
     LWP::Protocol::https@6.10 \
     Inline::Module@0.34
 
-
-  ${cpanm} --skip-satisfied -l local \
+  ## Install Biodiverse Utils
+  ${cpanm} \
     https://github.com/shawnlaffan/biodiverse-utils/archive/refs/tags/v1.07.tar.gz
 
   ## Test Biodiverse
