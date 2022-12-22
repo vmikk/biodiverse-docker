@@ -12,14 +12,14 @@ This repository contains definition files the [Biodiverse](https://shawnlaffan.g
 
 To build the [Docker](https://www.docker.com/) image with Biodiverse run:
 ```
-docker build --tag biodiverse . 
+docker build --tag biodiverse --file Dockerfile_NoPerlbrew . 
 ```
-The `Dockerfile` should be present in the current directory.
+The `Dockerfile_NoPerlbrew` should be present in the current directory.
 
 
 A ready-to-use image is available at [Docker Hub](https://hub.docker.com/r/vmikk/biodiverse) and can be downloaded with:
 ```
-docker pull vmikk/biodiverse:0.0.1
+docker pull vmikk/biodiverse:1.0.0
 ```
 
 
@@ -27,14 +27,14 @@ docker pull vmikk/biodiverse:0.0.1
 
 To build the [Singularity](https://sylabs.io/singularity/) image with Biodiverse run:
 ```
-sudo singularity build Biodiverse.sif SingularityDef.def
+sudo singularity build Biodiverse.sif SingularityDef_NoPerlbrew.def
 ```
-The `SingularityDef.def` should be present in the current directory.
+The `SingularityDef_NoPerlbrew.def` should be present in the current directory.
 
 
 A ready-to-use image is available at the [Singularity Library](https://cloud.sylabs.io/library/vmiks/gbif/biodiverse) and can be downloaded with:
 ```
-singularity pull --arch amd64 library://vmiks/gbif/biodiverse:0-0-1
+singularity pull --arch amd64 library://vmiks/gbif/biodiverse:1-0-0
 ```
 
 
