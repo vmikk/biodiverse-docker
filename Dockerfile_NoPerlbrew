@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+LABEL org.opencontainers.image.authors="vladimir.mikryukov@ut.ee;kessy.abarenkov@ut.ee"
+
 ## Use bash instead of sh
 SHELL ["/bin/bash", "-c"]
 
