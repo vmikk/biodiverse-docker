@@ -59,7 +59,8 @@ RUN cpanm \
     PDL@2.081 \
     Test2::Harness@1.000141 \
     Text::CSV@2.02 \
-    Text::CSV_XS@1.48 \
+    Text::CSV_XS@1.52 \
+    Excel::ValueReader::XLSX@1.13 \
     Alien::Build@2.74 \
     Alien::freexl@1.05 \
     Alien::libtiff@1.01 \
