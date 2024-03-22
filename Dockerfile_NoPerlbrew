@@ -31,7 +31,7 @@ RUN apt update -y \
       cpanminus \
       make cmake libtool automake autoconf pkg-config \
       libffi-dev zlib1g-dev libminizip-dev libexpat1-dev libssl-dev \
-      libarmadillo-dev libpoppler-dev libepsilon-dev liblzma-dev \
+      libarmadillo-dev libpoppler-dev liblzma-dev \
       libkml-dev libfreexl-dev libogdi-dev \
       libgdal-dev gdal-bin \
       libgeos-dev librttopo-dev \
@@ -45,6 +45,8 @@ RUN apt update -y \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# libepsilon-dev
 
 ## Install modules
 RUN cpanm \
