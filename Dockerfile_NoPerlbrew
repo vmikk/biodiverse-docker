@@ -63,6 +63,7 @@ RUN cpanm \
     Text::CSV@2.02 \
     Text::CSV_XS@1.52 \
     Excel::ValueReader::XLSX@1.13 \
+    Faster::Maths@0.02 \
     Alien::Build@2.74 \
     Alien::freexl@1.05 \
     Alien::libtiff@1.01 \
