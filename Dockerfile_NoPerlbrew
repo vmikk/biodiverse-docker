@@ -105,7 +105,7 @@ RUN cpanm \
     Inline::Module@0.34
 
 ## Install Biodiverse Utils
-RUN cpanm https://github.com/shawnlaffan/biodiverse-utils/releases/download/v1.08/Biodiverse-Utils-1.08.tar.gz
+RUN cpanm https://github.com/shawnlaffan/biodiverse-utils/releases/download/v1.09/Biodiverse-Utils-1.09.tar.gz
 
 ## Default @INC
 #   /etc/perl 
