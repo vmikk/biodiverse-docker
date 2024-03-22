@@ -19,7 +19,7 @@ The `Dockerfile_NoPerlbrew` should be present in the current directory.
 
 A ready-to-use image is available at [Docker Hub](https://hub.docker.com/r/vmikk/biodiverse) and can be downloaded with:
 ```
-docker pull vmikk/biodiverse:1.3.0
+docker pull vmikk/biodiverse:1.5.0
 ```
 
 
@@ -34,7 +34,7 @@ The `SingularityDef_NoPerlbrew.def` should be present in the current directory.
 
 A ready-to-use image is available at the [Singularity Library](https://cloud.sylabs.io/library/vmiks/gbif/biodiverse) and can be downloaded with:
 ```
-singularity pull --arch amd64 library://vmiks/gbif/biodiverse:1-3-0
+singularity pull --arch amd64 library://vmiks/gbif/biodiverse:1-5-0
 ```
 
 
