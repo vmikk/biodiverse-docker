@@ -1,4 +1,4 @@
-## Based on https://github.com/shawnlaffan/biodiverse/commit/a841cba9f56c87df6bc11cb1625ef6d29954a706
+## Based on https://github.com/shawnlaffan/biodiverse/commit/4e81cdfe00ece0ccb08dcb2da86b0254eb98ad70
 
 requires "Archive::Zip", "1.68";                   # added
 requires "autovivification", "0.18";
@@ -9,9 +9,11 @@ requires "Crypt::Mode::CBC", "0.080";              # added
 requires "Data::Compare", "1.29";                  # version specified
 requires "Data::Recursive", "1.1.0";               # version specified
 requires "Data::Structure::Util", "0.16";          # version specified
-requires "DBD::XBase", "1.08";                     # version specified
+# requires "DBD::XBase", "1.08";                     # version specified
+requires "Excel::ValueReader::XLSX", "1.15";       # version specified
 requires "Exception::Class", "1.45";               # version specified
 requires "Exporter::Easy", "0.18";                 # version specified
+#  requires "Faster::Maths";                       # introduces and then disabled at 4e81cdfe
 requires "File::BOM", "0.18";                      # version specified
 requires "File::Find::Rule", "0.34";               # version specified
 requires "Geo::Converter::dms2dd", "0.05";
@@ -28,7 +30,7 @@ requires "Math::Polygon", "1.10";                  # version specified
 requires "Math::Random::MT::Auto", "6.23";         # updated from 6.21
 requires "OLE::Storage_Lite", "0.22";              # added
 requires "parent";
-requires "Path::Class", "0.37";                  # version specified
+# requires "Path::Class", "0.37";                  # version specified
 requires "PDL::Stats", "0.83";                   # added
 requires "Readonly", "2.05";                     # version specified
 requires "Ref::Util", "0.204";                   # version specified
@@ -54,7 +56,7 @@ requires "Tree::R", "0.072";                     # version specified
 requires "URI::Escape";
 requires "URI::Escape::XS", "0.14"       ;       # version specified
 requires "XML::Parser", "2.47";                  # added
-requires "XML::Twig", "3.52";                    # added
+requires "XML::Twig", "3.53";                    # added
 requires "YAML::Syck", "1.34";                   # updated from 1.29
 
 # requires "Data::DumpXML";
@@ -62,7 +64,7 @@ requires "YAML::Syck", "1.34";                   # updated from 1.29
 # requires "Geo::GDAL::FFI", 0.11;  #  this will pick up the aliens
 # suggests "Panda::Lib";
 
-requires "Alien::Build", "2.80";                                  # added
+requires "Alien::Build", "2.84";                                  # added
 requires "Alien::Build::Plugin::Cleanse::BuildDir", "0.06";       # added
 requires "Alien::Build::Plugin::Decode::SourceForge", "0.02";     # added
 requires "Alien::Build::Plugin::PkgConfig::PPWrapper", "0.03";    # added
